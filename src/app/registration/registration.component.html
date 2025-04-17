@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col-4 offset-4">
+  <form [formGroup]="registrationForm" (ngSubmit)="registrationSubmit()">
+  <div class="form-group">
+      <label for="name">Name</label><input type="text" class="form-control" id='name'formControlName="name"/>
+     @if (registrationForm.controls['name'].invalid && (registrationForm.controls['name'].touched || registrationForm.controls['name'].dirty)) {
+      <div class="text-warning">Please enter Name</div>
+     }
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label><input type="text" class="form-control" id='email'formControlName="email"/>
+    @if (registrationForm.controls['email'].invalid && (registrationForm.controls['email'].touched || registrationForm.controls['email'].dirty)) {
+     <div class="text-warning">Please enter Email</div>
+    }
+  </div>
+  <div class="form-group">
+    <label for="password"> Password</label><input type="text" class="form-control" id='password'formControlName="password"/>
+    @if (registrationForm.controls['password'].invalid && (registrationForm.controls['password'].touched || registrationForm.controls['password'].dirty)){
+      @if(registrationForm.controls['password'].errors?.['minlength']){
+        <div class="text-warning">Max length is 10 characters</div>
+      }
+      @if(registrationForm.controls['password'].errors?.['required']){
+      <div class="text-warning">Please enter Password</div>
+    }
+       }
+</div>
+  <div classs="text-center">
+  <button class='btn btn-primary'type="submit" [disabled]="registrationForm.invalid">Register</button>
+  </div>
+      </form>
+      </div>>

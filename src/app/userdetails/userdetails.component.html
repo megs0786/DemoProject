@@ -1,0 +1,29 @@
+
+<table class="responsive">
+    <th>Name</th>
+    <th>Phone</th>
+    <th>Email</th>
+    <th>Website</th>
+    @if(userDetailsError$ | async){
+        <tr>
+       
+No Records found
+            
+        </tr>
+    }
+    @else{
+    @for(user of userDetails$ | async; track user.id){
+        <tr>
+       
+            <td>{{user.name}}</td>
+            <td>{{user.phone}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.website}}</td>
+            
+        </tr>
+}
+}
+</table>
+
+
+

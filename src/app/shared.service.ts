@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import {registrationModel, loginModel } from './sharedmodel';
+import {registrationModel, loginModel, userDetailsModel } from './sharedmodel';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,26 +9,21 @@ import {registrationModel, loginModel } from './sharedmodel';
 export class SharedService {
 
   constructor() {}
-  logindata:any=[];
-  title!: string;
 https= inject(HttpClient);
+title='one';
+ headers = new HttpHeaders({
+  'Content-Type': 'application/json',
+  'Access-Control-Allow-Origin': '*'
+});
+getAllUsers(url:string){
 
-onLogin(body: loginModel){
-  const storedData=localStorage.getItem('registeruser');
-  storedData===null?undefined:JSON.parse(storedData);
-if(storedData){
-  let filteredValue = JSON.parse(storedData).find((i:any)=>{
-   return i.email.includes(body.email)});
-  this.title=filteredValue.name;
-  return filteredValue;
-  
+  return this.https.get<userDetailsModel>(url)
+}
+
+postUsers(url:string,body:any){
+let httpOptions = { headers: this.headers };
+return this.https.post<any>(url, body, httpOptions);
 }
 }
-onRegistration(body:registrationModel){
-  console.log(this.logindata);
-  this.logindata.push(body);
-localStorage.setItem("registeruser",JSON.stringify(this.logindata))
-return this.logindata
-}}
 
 

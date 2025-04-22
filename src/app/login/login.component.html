@@ -1,6 +1,6 @@
-<div class="row">
-  <div class="col-4 offset-4">
-<form [formGroup]="loginForm" (ngSubmit)="loginSubmit()">
+<div class="login-container">
+<form class="login-form"[formGroup]="loginForm" (ngSubmit)="loginSubmit()">
+  <h1>Sign In </h1>
 <div class="form-group">
     <label for="email">Email</label><input type="text" class="form-control" id='email'formControlName="email"/>
    @if (loginForm.controls['email'].invalid && (loginForm.controls['email'].touched || loginForm.controls['email'].dirty)) {
@@ -18,10 +18,10 @@
     }
        }
 </div>
-<div classs="text-center">
-<button class='btn btn-primary'type="submit" [disabled]="loginForm.invalid">Login</button>
+<div classs="form-group">
+<button type="submit" [disabled]="loginForm.invalid">Login</button>
 </div>
-<div class="text-center">
+<div class="form-group">
     If you doesn't have an account ?  Please click on <a routerLink="/registration">Sign Up</a>
   </div>
     </form>

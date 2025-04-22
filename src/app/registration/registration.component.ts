@@ -3,24 +3,26 @@ import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { SharedService } from '../shared.service';
+import { compileClassDebugInfo } from '@angular/compiler';
 
 @Component({
   selector: 'app-registration',
   imports: [ReactiveFormsModule, CommonModule,FormsModule, RouterModule],
   providers:[SharedService],
   templateUrl: './registration.component.html',
-  styleUrl: './registration.component.sass'
+  styleUrl: './registration.component.scss'
 })
 
 export class RegistrationComponent {
   registrationForm!: FormGroup;
+email:string | undefined;
   sharedService = inject(SharedService);
 router =  inject(Router)
   ngOnInit(){
     this.registrationForm = new FormGroup({
       name:new FormControl('',Validators.required),
-email:new FormControl('',Validators.required),
-password:new FormControl('',[Validators.required,Validators.minLength(10)])
+email:new FormControl('',[Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$')]),
+password:new FormControl('',[Validators.required,Validators.minLength(4)])
     })
   }
   registrationSubmit(){
@@ -28,16 +30,23 @@ password:new FormControl('',[Validators.required,Validators.minLength(10)])
       return false;
   }
   const body ={
-    name:this.registrationForm.controls['name'].value,
-    email:this.registrationForm.controls['email'].value,
+    fullname:this.registrationForm.controls['name'].value,
+    emailId:this.registrationForm.controls['email'].value,
     password:this.registrationForm.controls['password'].value,
   }
-   const res = this.sharedService.onRegistration(body);
-   if (res){
-    window.alert('Registration successful.');
+   this.sharedService.postUsers("https://projectapi.gerasim.in/api/UserApp/CreateNewUser",body).subscribe({
+    next:(res)=>{
+      this.email = res.data;
+      console.log(this.email);
+      window.alert('Registration successful.');
+      return this.router.navigate(['/login']);
+    }
+   });
+   /*if (res){
+    
  
-   }
-  return this.router.navigate(['/login']);
+   }*/
   
+  return true;
   }
 }

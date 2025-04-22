@@ -1,0 +1,25 @@
+
+$primary-color:#fff;
+
+
+nav{
+    padding-top:10px;
+    background-color:$primary-color;
+  ul{
+    display:flex;
+    list-style:none;
+    justify-content: flex-end;
+    align-items: center;
+
+}  
+
+li {
+    height:50px; 
+        }
+        a{
+            text-decoration: none;
+            height:100%;
+            padding:0 30px;
+
+        }
+}

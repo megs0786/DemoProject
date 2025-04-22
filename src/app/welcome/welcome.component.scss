@@ -1,0 +1,38 @@
+
+.home-container {
+    display:flex;
+    flex-direction:row;
+    display:flex;
+    margin-bottom:2.5rem;
+    justify-content:space-between;
+    img{
+        height:40vh;
+        width:100%;
+    }
+}
+
+
+.grid-container {
+    display:flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin:2.5rem 0rem;
+ .grid-image-boxes{
+        border:2px solid green;
+        width:15vw;
+        height: 30vh;
+
+    }
+    .flex-card-information{
+        padding:16px;
+        border:2px solid green;
+        width:20vw;
+        height: 12vh;
+        p{
+            padding-top:16px;
+        }
+    }
+}
+
+

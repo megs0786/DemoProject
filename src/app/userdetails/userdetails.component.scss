@@ -1,0 +1,17 @@
+.user-detail-container{
+    overflow-x:auto;
+}
+table{
+  border-collapse:none;
+  width:100%;
+    
+  th, td{
+    text-align: center;
+    padding:1vw;
+}
+
+th,tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+}
+

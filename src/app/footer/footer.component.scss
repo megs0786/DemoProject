@@ -1,0 +1,21 @@
+$padding: 10px;
+$background-color:#6ba8ab;
+%display-asflex {
+  display: flex;
+}
+
+.footer-container {
+    @extend %display-asflex;
+      flex-direction:row;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      margin:2.5rem 0rem;
+padding:1vw;
+      background-color: $background-color;
+   .footer-information{
+     line-height: 2.5rem;
+      li{
+list-style: none;
+      }
+    }
+    }

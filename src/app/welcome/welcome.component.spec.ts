@@ -1,7 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { WelcomeComponent } from './welcome.component';
-import { RouterModule } from '@angular/router';
+import { provideRouter, RouterModule } from '@angular/router';
+import { provideHttpClient } from '@angular/common/http';
+import { computeMsgId } from '@angular/compiler';
 
 describe('WelcomeComponent', () => {
   let component: WelcomeComponent;
@@ -9,7 +11,8 @@ describe('WelcomeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [WelcomeComponent,RouterModule.forRoot([]),]
+      imports: [WelcomeComponent,RouterModule.forRoot([]),],
+      providers:[provideHttpClient(),provideRouter([])],
     })
     .compileComponents();
 
@@ -20,5 +23,17 @@ describe('WelcomeComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+  it('should call accordion', () => {
+    component.toggleAccordian(2);
+  });
+  it('should call next', () => {
+    component.next();
+  });
+  it('should call previous', () => {
+    component.currentIndex = 1;
+    component.previous();
+
+  expect(component.currentIndex).toEqual(component.currentIndex-1);
   });
 });

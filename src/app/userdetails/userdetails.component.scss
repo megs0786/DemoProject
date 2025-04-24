@@ -1,17 +1,19 @@
-.user-detail-container{
-    overflow-x:auto;
+.user-detail-container {
+  overflow-x: auto;
+  margin: 2.5rem 0rem;
 }
-table{
-  border-collapse:none;
-  width:100%;
-    
-  th, td{
+table {
+  border-collapse: none;
+  width: 100%;
+
+  th,
+  td {
     text-align: center;
-    padding:1vw;
-}
+    padding: 1vw;
+  }
 
-th,tr:nth-child(even) {
+  th,
+  tr:nth-child(even) {
     background-color: #f2f2f2;
+  }
 }
-}
-

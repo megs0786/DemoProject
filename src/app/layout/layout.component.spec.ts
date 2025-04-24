@@ -11,9 +11,8 @@ describe('LayoutComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [LayoutComponent],
-      providers:[provideHttpClient(),provideRouter([])],
-    })
-    .compileComponents();
+      providers: [provideHttpClient(), provideRouter([])],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(LayoutComponent);
     component = fixture.componentInstance;

@@ -1,30 +1,23 @@
-<div classs="user-detail-container">
-<table>
+<div class="user-detail-container">
+  <h4>{{ userRole | uppercase }} - Role</h4>
+  <table>
     <th>Name</th>
     <th>Phone</th>
     <th>Email</th>
     <th>Website</th>
-    @if(userDetailsError$ | async){
+    @if (userDetailsError$ | async) {
+      <tr>
+        No Records found
+      </tr>
+    } @else {
+      @for (user of userDetails$ | async; track user.id) {
         <tr>
-       
-No Records found
-            
+          <td>{{ user.name }}</td>
+          <td>{{ user.phone }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.website }}</td>
         </tr>
+      }
     }
-    @else{
-    @for(user of userDetails$ | async; track user.id){
-        <tr>
-       
-            <td>{{user.name}}</td>
-            <td>{{user.phone}}</td>
-            <td>{{user.email}}</td>
-            <td>{{user.website}}</td>
-            
-        </tr>
-}
-}
-</table>
+  </table>
 </div>
-
-
-

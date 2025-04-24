@@ -11,10 +11,9 @@ describe('WelcomeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [WelcomeComponent,RouterModule.forRoot([]),],
-      providers:[provideHttpClient(),provideRouter([])],
-    })
-    .compileComponents();
+      imports: [WelcomeComponent, RouterModule.forRoot([])],
+      providers: [provideHttpClient(), provideRouter([])],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(WelcomeComponent);
     component = fixture.componentInstance;
@@ -34,6 +33,6 @@ describe('WelcomeComponent', () => {
     component.currentIndex = 1;
     component.previous();
 
-  expect(component.currentIndex).toEqual(component.currentIndex-1);
+    expect(component.currentIndex).toEqual(0);
   });
 });

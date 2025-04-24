@@ -6,13 +6,12 @@ import { provideHttpClient } from '@angular/common/http';
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
-  let router:Router;
+  let router: Router;
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HeaderComponent,RouterModule.forRoot([])],
-      providers:[provideHttpClient(),provideRouter([])],
-    })
-    .compileComponents();
+      imports: [HeaderComponent, RouterModule.forRoot([])],
+      providers: [provideHttpClient(), provideRouter([])],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(HeaderComponent);
     component = fixture.componentInstance;
@@ -26,7 +25,6 @@ describe('HeaderComponent', () => {
   it('should call logout', () => {
     const logoutSpy = jest.spyOn(router, 'navigate');
     component.onLogout();
-   expect(logoutSpy).toHaveBeenCalledWith(['./login']);
-
+    expect(logoutSpy).toHaveBeenCalledWith(['./login']);
   });
 });

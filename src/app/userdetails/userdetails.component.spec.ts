@@ -8,14 +8,17 @@ import { provideRouter } from '@angular/router';
 describe('UserdetailsComponent', () => {
   let component: UserdetailsComponent;
   let fixture: ComponentFixture<UserdetailsComponent>;
-let sharedService:SharedService;
+  let sharedService: SharedService;
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [UserdetailsComponent],
-      providers:[SharedService,provideHttpClient(),provideRouter([]),
-        provideHttpClientTesting()]
-    })
-    .compileComponents();
+      providers: [
+        SharedService,
+        provideHttpClient(),
+        provideRouter([]),
+        provideHttpClientTesting(),
+      ],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(UserdetailsComponent);
     component = fixture.componentInstance;

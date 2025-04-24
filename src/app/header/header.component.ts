@@ -6,15 +6,16 @@ import { SharedService } from '../shared.service';
   selector: 'app-header',
   imports: [RouterModule],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+  styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
   sharedService = inject(SharedService);
-  router =  inject(Router)
-  onLogout(){
-localStorage.removeItem('userDetails');
-this.router.navigate(['./login']);
-
-}
-
+  router = inject(Router);
+  onLogout() {
+    localStorage.removeItem('userDetails');
+    this.router.navigate(['./login']);
+  }
+  roleSelect(event: any) {
+    this.sharedService.roleSelected$.next(event.target.value);
+  }
 }

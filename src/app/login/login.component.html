@@ -1,28 +1,59 @@
 <div class="login-container">
-<form class="login-form"[formGroup]="loginForm" (ngSubmit)="loginSubmit()">
-  <h1>Sign In </h1>
-<div class="form-group">
-    <label for="email">Email</label><input type="text" class="form-control" id='email'formControlName="email"/>
-   @if (loginForm.controls['email'].invalid && (loginForm.controls['email'].touched || loginForm.controls['email'].dirty)) {
-    <div class="text-warning">Please enter Email</div>
-   }
-</div>
-<div class="form-group">
-    <label for="password"> Password</label><input type="text" class="form-control" id='password'formControlName="password"/>
-    @if (loginForm.controls['password'].invalid && (loginForm.controls['password'].touched || loginForm.controls['password'].dirty)){
-      @if(loginForm.controls['password'].errors?.['minlength']){
-        <div class="text-warning">Max length is 10 characters</div>
+  <form class="login-form" [formGroup]="loginForm" (ngSubmit)="loginSubmit()">
+    <h1>Sign In</h1>
+    <div class="form-group">
+      <label for="email">Email</label
+      ><input
+        type="text"
+        class="form-control"
+        id="email"
+        formControlName="email"
+      />
+      @if (
+        loginForm.controls['email'].invalid &&
+        (loginForm.controls['email'].touched ||
+          loginForm.controls['email'].dirty)
+      ) {
+        @if (loginForm.controls['email'].errors?.['pattern']) {
+          <div class="text-warning">Please enter email in correct format</div>
+        }
+        @if (loginForm.controls['email'].errors?.['required']) {
+          <div class="text-warning">Please enter email</div>
+        }
       }
-      @if(loginForm.controls['password'].errors?.['required']){
-      <div class="text-warning">Please enter Password</div>
-    }
-       }
-</div>
-<div classs="form-group">
-<button type="submit" [disabled]="loginForm.invalid">Login</button>
-</div>
-<div class="form-group">
-    If you doesn't have an account ?  Please click on <a routerLink="/registration">Sign Up</a>
-  </div>
-    </form>
     </div>
+    <div class="form-group">
+      <label for="password"> Password</label
+      ><input
+        type="text"
+        class="form-control"
+        id="password"
+        formControlName="password"
+      />
+      @if (
+        loginForm.controls['password'].invalid &&
+        (loginForm.controls['password'].touched ||
+          loginForm.controls['password'].dirty)
+      ) {
+        @if (loginForm.controls['password'].errors?.['minlength']) {
+          <div class="text-warning">Min length is 4 characters</div>
+        }
+        @if (loginForm.controls['password'].errors?.['maxlength']) {
+          <div class="text-warning">Max length is 10 characters</div>
+        }
+        @if (loginForm.controls['password'].errors?.['required']) {
+          <div class="text-warning">Please enter Password</div>
+        }
+      }
+    </div>
+    <div class="form-groupbtn">
+      <button class="btn" type="submit" [disabled]="loginForm.invalid">
+        Login
+      </button>
+    </div>
+    <div class="form-group">
+      If you doesn't have an account ? Please click on
+      <a routerLink="/registration">Sign Up</a>
+    </div>
+  </form>
+</div>

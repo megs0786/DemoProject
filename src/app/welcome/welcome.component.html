@@ -1,47 +1,73 @@
-
 <div class="home-container">
-    <img src="images/features_background.webp">
-      <div class="info-text">
-
-<h5>Unlimited Fun!!!!!!!!!!!!!</h5>
-    </div>  
+  <img src="images/features_background.webp" />
+  <div class="info-text">
+    <h5>Unlimited Fun!!!!!!!!!!!!!</h5>
+  </div>
 </div>
 <h4>Trending</h4>
 <div class="grid-container">
-  <button class="carousel-btn" (click)="previous()" [disabled]="currentIndex === 0">Previous</button>
+  <button
+    class="carousel-btn"
+    (click)="previous()"
+    [disabled]="currentIndex === 0"
+  >
+    Previous
+  </button>
   <div class="carousel-card">
- 
-    @for(item of currentItems;track item.id;){
-
-      <img class="grid-image-boxes" [src]=item.src>
-  }
-
+    @for (item of currentItems; track item.id) {
+      <img class="grid-image-boxes" [src]="item.src" />
+    }
   </div>
-  <button class="carousel-btn" (click)="next()" [disabled]="currentIndex + itemsPerView >= carouselImgSource.length">Next</button>
+  <button
+    class="carousel-btn"
+    (click)="next()"
+    [disabled]="currentIndex + itemsPerView >= carouselImgSource.length"
+  >
+    Next
+  </button>
 </div>
-
 
 <h4>Reasons to Join</h4>
 <div class="grid-container">
-    <div class="flex-card-information"><h5><b>Enjoy on your TV</b></h5><p>Watch on smart TVs, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray players and more.</p></div>
-    <div class="flex-card-information"><h5><b>Download your shows to watch offline
-    </b></h5><p>Save your favourites easily and always have something to watch.</p></div>
-    <div class="flex-card-information"><h5><b>Watch everywhere</b></h5><p>Stream unlimited movies and TV shows on your phone, tablet, laptop and TV.</p></div>
-    <div class="flex-card-information"><h5><b>Create profiles for kids</b></h5><p>Send kids on adventures with their favourite characters in a space made just for them — free with your membership.</p></div>
-   </div>
-   <h4>Accordion</h4>
+  <div class="flex-card-information">
+    <h5><b>Enjoy on your TV</b></h5>
+    <p>
+      Watch on smart TVs, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray
+      players and more.
+    </p>
+  </div>
+  <div class="flex-card-information">
+    <h5><b>Download your shows to watch offline </b></h5>
+    <p>Save your favourites easily and always have something to watch.</p>
+  </div>
+  <div class="flex-card-information">
+    <h5><b>Watch everywhere</b></h5>
+    <p>
+      Stream unlimited movies and TV shows on your phone, tablet, laptop and TV.
+    </p>
+  </div>
+  <div class="flex-card-information">
+    <h5><b>Create profiles for kids</b></h5>
+    <p>
+      Send kids on adventures with their favourite characters in a space made
+      just for them — free with your membership.
+    </p>
+  </div>
+</div>
+<h4>Accordion</h4>
 
-  <div class="grid-container">
-    <div class="accordion">
-     
-    <div class="accordion-item"> @for(item of accordionData;track item;  let i = $index){
-      <div class="accordion-question" (click)="toggleAccordian(i)">
-        {{ item.question }}
-        <span class="arrow">{{ activeIndex === i ? '-' : '+' }}</span>
-      </div>
-      <div class="accordion-answer" [ngClass]="{ 'active': activeIndex === i }">
-        {{ item.answer }}
-      </div>
-    }
+<div class="grid-container">
+  <div class="accordion">
+    <div class="accordion-item">
+      @for (item of accordionData; track item; let i = $index) {
+        <div class="accordion-question" (click)="toggleAccordian(i)">
+          {{ item.question }}
+          <span class="arrow">{{ activeIndex === i ? '-' : '+' }}</span>
+        </div>
+        <div class="accordion-answer" [ngClass]="{ active: activeIndex === i }">
+          {{ item.answer }}
+        </div>
+      }
     </div>
-  </div>  </div>
+  </div>
+</div>

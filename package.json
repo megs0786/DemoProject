@@ -26,8 +26,7 @@
     "test:watch": "jest --watch",
     "test-coverage": "jest --coverage",
     "format": "prettier --write \"src/**/*.{ts,html,scss,json}\"",
-      "check-format": "prettier --check \"src/**/*.{ts,html,scss,json}\""
-    
+    "check-format": "prettier --check \"src/**/*.{ts,html,scss,json}\""
   },
   "private": true,
   "dependencies": {
@@ -38,7 +37,9 @@
     "@angular/platform-browser": "^19.2.0",
     "@angular/platform-browser-dynamic": "^19.2.0",
     "@angular/router": "^19.2.0",
+    "angular-http-server": "^1.12.0",
     "bootstrap": "^5.3.5",
+    "http-server": "^14.1.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"

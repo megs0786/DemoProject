@@ -23,6 +23,6 @@ export class UserdetailsComponent {
     this.userDetails$ = this.sharedService.getAllUsers(
       'https://jsonplaceholder.typicode.com/users',
     );
-    //this.userDetailsError$ = this.userDetails$.pipe(ignoreElements(),catchError((e)=>of(e))) - to check ignorelement condition
+    this.userDetailsError$ = this.userDetails$.pipe(ignoreElements(),catchError((e)=>of(e))) //- to check ignorelement condition
   }
 }

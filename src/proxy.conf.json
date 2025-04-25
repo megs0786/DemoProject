@@ -1,0 +1,26 @@
+/*{
+    "/api": {
+      "target": "https://projectapi.gerasim.in",
+      "secure": false,
+      "changeOrigin": true
+    }
+  }
+  */
+  {
+  "/api1": {
+    "target": "https://projectapi.gerasim.in",
+    "secure": false,
+    "pathRewrite": {
+      "^/api1": ""
+    },
+    "logLevel": "debug"
+  },
+  "/api2": {
+    "target": "https://jsonplaceholder.typicode.com/users",
+    "secure": false,
+    "pathRewrite": {
+      "^/api2": ""
+    },
+    "logLevel": "debug"
+  }
+}

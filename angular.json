@@ -32,7 +32,7 @@
               }
             ],
             "styles": [
-              "src/styles.scss",
+              "src/styles.scss"
              // "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": []
@@ -71,7 +71,9 @@
               "buildTarget": "DemoProject:build:development"
             }
           },"options": {
-                        "port": 4209
+                        "port": 4209,
+                        "proxyConfig": "src/proxy.conf.json"
+
                     },
 
           "defaultConfiguration": "development"

@@ -20,7 +20,7 @@ import { compileClassDebugInfo } from '@angular/compiler';
 })
 export class RegistrationComponent {
   registrationForm!: FormGroup;
-  email: string | undefined;
+  email!: string;
   sharedService = inject(SharedService);
   router = inject(Router);
   ngOnInit() {

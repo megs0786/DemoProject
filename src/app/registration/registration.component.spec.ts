@@ -13,9 +13,9 @@ import { SharedService } from '../shared.service';
 import { HttpClient, provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { Router } from '@angular/router';
-import { DebugElement } from '@angular/core';
+import { DebugElement, ɵclearResolutionOfComponentResourcesQueue } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { Observable, of } from 'rxjs';
+import { async, lastValueFrom, Observable, of } from 'rxjs';
 
 describe('RegistrationComponent', () => {
   let component: RegistrationComponent;
@@ -35,6 +35,7 @@ describe('RegistrationComponent', () => {
     sharedServiceMock = {
       postUsers: jest.fn(),
     };
+
     await TestBed.configureTestingModule({
       imports: [RegistrationComponent],
       providers: [
@@ -76,45 +77,28 @@ describe('RegistrationComponent', () => {
     expect(component.registrationForm.valid).toBe(false);
   });
 
-  /* it('should check the labels', () => {
-    let buttonDisabled = el.queryAll(By.css('btn'));
-    expect(buttonDisabled[0].nativeElement.disabled).toBeTruthy();
-  });*/
-  it('should call registration method', fakeAsync(async (done: any) => {
+ it('should check the disable button', () => {
+    let buttonDisabled = el.query(By.css('.btn'));
+   expect(buttonDisabled.nativeElement.disabled).toBeTruthy();
+  });
+
+  it('should call registration method',async()  => {
     const response = {
       message: 'Sequence contains more than one element',
       result: false,
-      data: null,
+      data: {},
     };
-    let finalResult;
     const body = {
       fullname: 'testing',
       emailId: 'testing@gmail.com',
       password: 'testing',
     };
     const url = 'https://projectapi.gerasim.in/api/UserApp/CreateNewUser';
-    jest.spyOn(sharedService, 'postUsers').mockReturnValue(of(response));
-    // const response = cold('-a|', { a: createBookResponse });
-    //const expected = cold('-b|', { b: createBookResponse.data });
-    // sharedService.postUsers = jest.fn((url,body) => response);
+ jest.spyOn(router, 'navigate');
+ jest.spyOn(sharedService, 'postUsers').mockReturnValue(of(response));
 
-    //expect(component.registrationSubmit).toBeTruthy();
-    sharedServiceMock.postUsers = jest.fn(() => response);
-    component.registrationSubmit();
-    fixture.detectChanges();
-
-    expect(sharedServiceMock.postUsers(url, body)).toBe(response);
-    /*const async =   jest.spyOn(sharedService, 'postUsers').mockReturnValue(of(response));
-  
-  component.registrationSubmit();
-  fixture.detectChanges();
-
-  await async;
-  expect(async).toHaveBeenCalled();
-  tick(4000);
-  //expect(sharedService.postUsers).toHaveBeenCalled();
- //const loginSpy = jest.spyOn(router, 'navigate');
- expect(component.email).toBe(response.data);
- //expect(sharedService.postUsers).toHaveBeenCalledWith(url,mockRegistrationData);*/
-  }));
+ component.registrationSubmit();
 });
+
+});
+

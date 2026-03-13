@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "freeaccomodation-f1f18"
-  }
+    "default": "demoproject-221ee",
+    "demo": "demoproject-221ee"
+  },
+  "targets": {},
+  "etags": {}
 }

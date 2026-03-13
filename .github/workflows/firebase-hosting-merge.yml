@@ -16,6 +16,6 @@ jobs:
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_FREEACCOMODATION_F1F18 }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_DEMOPROJECT_221EE }}
           channelId: live
-          projectId: freeaccomodation-f1f18
+          projectId: demoproject-221ee
